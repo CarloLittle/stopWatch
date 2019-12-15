@@ -9,7 +9,7 @@ class stopWatch {
     function startTimer() {
         timeElapsed = 0;
         laps = [timeElapsed];
-        setInterval(() => {
+        var timeId = setInterval(() => {
             timeElapsed += 1
         })
         displayedTime = elapstedTime;
@@ -24,12 +24,20 @@ class stopWatch {
     }
     
     function pauseTimer(status) {
-        // TODO: pause timer
-        if (status == "paused") {}
-    
+        if (status == "running") {
+            clearInterval(timeId);
+        } else if (status == "paused") {
+            var timeId = setInterval(() => {
+                timeElapsed += 1
+            }
+        }
     }
     
-    function lapTimer() {}
+    function lapTimer() {
+        if (status != "stopped") {
+            laps.push(0);
+        }
+    }
     
     function resetLap() {}
     
